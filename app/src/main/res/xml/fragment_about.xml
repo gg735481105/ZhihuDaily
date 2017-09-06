@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/app_name">
+        <Preference android:title="应用介绍" android:summary="111111111"/>
+        <Preference android:title="关于我" android:summary="111111111" />
+        <Preference android:title="功能实现" android:summary="111111111" />
+        <Preference android:title="感谢开源" android:summary="111111111" />
+    </PreferenceCategory>
+</PreferenceScreen>

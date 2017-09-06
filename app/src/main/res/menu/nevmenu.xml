@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:id="@+id/g1">
+        <item
+            android:id="@+id/zhihuitem"
+            android:checkable="true"
+            android:icon="@drawable/zhihu"
+            android:title="阿正日报"
+            />
+    </group>
+    <group>
+        <item android:icon="@drawable/abc_ic_star_black"
+            android:id="@+id/item_collection"
+            android:checkable="true"
+            android:textColor="?attr/text_primary"
+            android:title="@string/mycollection"/>
+        <item android:icon="@drawable/ic_info_black_24dp"
+            android:id="@+id/item_about"
+            android:checkable="true"
+            android:title="@string/about"/>
+    </group>
+
+</menu>

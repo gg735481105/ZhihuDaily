@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">知乎头条</string>
+    <string name="goodpictures">好图</string>
+    <string name="todaynews">今日头条</string>
+    <string name="zhihu">知乎</string>
+    <string name="nev_title">个人主页</string>
+    <string name="display_model_night">夜间模式</string>
+    <string name="display_model_light">日间模式</string>
+    <string name="snack_infor">请检查网络</string>
+    <string name="app_exit_tip">再点一次，退出</string>
+
+    <string name="transition_shot_background" translatable="false">shot_background</string>
+    <string name="transition_shot" translatable="false">shot</string>
+    <string name="download_offline">离线下载</string>
+    <string name="mycollection">我的收藏</string>
+    <string name="please_login">请登录</string>
+    <string name="about">关于</string>
+    <string name="about_app">架构：MVP\n图片加载：Glide\n网络请求：RxJava + Retrofit＋okhttp\n其他：Cardview，RecycleView，Butterknife</string>
+    <string name="about_me">Email:735481105@qq.com\nGitHub:</string>
+    <string name="about_function">文章列表的展示与缓存\n首页界面的轮播控件\n文章浏览到底部时自动加载更多\n标记已读文章\n自动缓存文章\n夜间模式</string>
+    <string name="about_thanks">rxjava\nrxandroid\nretrofit2\nokhttp3\nglide\nbutterknife\ngson</string>
+</resources>
