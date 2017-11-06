@@ -152,6 +152,7 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment {
             zhihuAdapter.clearData();
             currentLoadDate = "0";
             zhihuPresenter.getLastZhihuNews();
+            Snackbar.make(recycleZhihu, getString(R.string.refresh_success), Snackbar.LENGTH_SHORT).show();
         }else{
             Snackbar.make(recycleZhihu, getString(R.string.snack_infor), Snackbar.LENGTH_SHORT).setAction("重试", new View.OnClickListener() {
                 @Override
@@ -250,7 +251,6 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment {
         final ConnectivityManager connectivityManager
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        //  Log.d("ZhihuFragment", "activeNetworkInfo.isConnected():"+activeNetworkInfo.isConnected());
 
         connected = activeNetworkInfo != null && activeNetworkInfo.isConnected();
         if (!connected && progress != null) {//不判断容易抛出空指针异常

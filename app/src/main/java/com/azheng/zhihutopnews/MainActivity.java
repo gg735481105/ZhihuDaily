@@ -17,6 +17,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,8 +48,8 @@ public class MainActivity extends BaseActivity{
     private Fragment currentFragment;
     private long exitTime = 0;
 
-    private final static String isZhihuFragment = "com.cdw.zhihutopnews.fragment.ZhihuFragment";
-    private final static String isAboutFragment = "com.cdw.zhihutopnews.fragment.AboutFragment";
+    private final static String isZhihuFragment = "com.azheng.zhihutopnews.fragment.ZhihuFragment";
+    private final static String isAboutFragment = "com.azheng.zhihutopnews.fragment.AboutFragment";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +100,7 @@ public class MainActivity extends BaseActivity{
         navView.setItemTextColor(new ColorStateList(state, color));
         navView.setItemIconTintList(new ColorStateList(state, iconcolor));
         /**
-         * 暂未实现下拉刷新功能
+         * 设置下拉刷新颜色
          */
         sr.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -181,7 +182,7 @@ public class MainActivity extends BaseActivity{
     }
 
     /**
-     * 切换不同的Fragment，当前只有一个Fragment，后续扩展
+     * 切换不同的Fragment
      *
      * @param fragment
      */

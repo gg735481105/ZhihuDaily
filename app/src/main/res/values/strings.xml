@@ -8,6 +8,7 @@
     <string name="display_model_light">日间模式</string>
     <string name="snack_infor">请检查网络</string>
     <string name="app_exit_tip">再点一次，退出</string>
+    <string name="refresh_success">刷新成功！</string>
 
     <string name="transition_shot_background" translatable="false">shot_background</string>
     <string name="transition_shot" translatable="false">shot</string>
