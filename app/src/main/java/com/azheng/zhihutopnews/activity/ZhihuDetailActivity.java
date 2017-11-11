@@ -3,12 +3,19 @@ package com.azheng.zhihutopnews.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -30,13 +37,15 @@ import com.azheng.zhihutopnews.uitls.WebUtil;
 import com.azheng.zhihutopnews.widget.ParallaxScrimageView;
 import com.azheng.zhihutopnews.widget.TranslateYTextView;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
-
     @BindView(R.id.shot)
     ParallaxScrimageView parallaxScrimageView;//自定义ImageView，显示新闻标题图片
     @BindView(R.id.toolbar)
@@ -48,15 +57,14 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
     @BindView(R.id.title)
     TranslateYTextView translateYTextView;
 
-
     private int width;//图片的宽
     private int height;//图片的高
     private String id;//新闻ID
     private String title;//新闻标题
     private boolean isToolbarenable = true;//toolbar是否能点击
+    private String mShareUrl;//分享url
     private IZhihuStoryPresenter iZhihuStoryPresenter;
     private NestedScrollView.OnScrollChangeListener scrollListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +83,31 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
         initData();
         initView();
         getData();
+    }
+
+    @Override public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detailmenu, menu);
+        return true;
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_collection:
+                Log.d("azheng", "collection is clicked");
+                break;
+            case R.id.item_share:
+                //File file = new File(mShareUrl);
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                String name = getString(R.string.app_name);
+                i.putExtra(Intent.EXTRA_SUBJECT, name);
+                i.putExtra(Intent.EXTRA_TEXT, "[" + name + "]\n" + title + "\n" + mShareUrl);
+                startActivity(Intent.createChooser(i, "请选择第三方应用..."));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -274,6 +305,7 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)//缓存原始图片
                 .into(parallaxScrimageView);
         String url = zhihuStory.getShareUrl();
+        mShareUrl = url;
         boolean isEmpty = TextUtils.isEmpty(zhihuStory.getBody());
         String body = zhihuStory.getBody();
         String[] scc = zhihuStory.getCss();
@@ -283,7 +315,6 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
             String data = WebUtil.buildHtmlWithCss(body, scc, Config.isNight);
             wvZhihu.loadDataWithBaseURL(WebUtil.BASE_URL, data, WebUtil.MIME_TYPE, WebUtil.ENCODING, null);
         }
-
     }
 
 

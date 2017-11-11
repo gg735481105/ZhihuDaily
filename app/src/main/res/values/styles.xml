@@ -23,5 +23,17 @@
 
     </style>
 
+    <!-- -修改overlow的顏色-->
+    <style name="Overflow" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--overflow展開字體顏色-->
+        <item name="android:textColorPrimary">#000</item>
+
+       <!-- <item name="actionMenuTextColor">#ffff</item>-->
+
+        <!-- 三個點顏色-->
+        <item name="android:textColorSecondary">#ffff</item>s
+
+    </style>
+
 
 </resources>

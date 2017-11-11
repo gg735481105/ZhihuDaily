@@ -20,6 +20,7 @@
             android:background="?attr/toolbar_background"
             app:navigationIcon="@drawable/home"
             app:titleTextColor="@color/background_light"
+            android:theme="@style/Overflow"
             >
         </android.support.v7.widget.Toolbar>
         <android.support.v4.widget.SwipeRefreshLayout

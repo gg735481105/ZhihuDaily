@@ -18,10 +18,6 @@ import com.azheng.zhihutopnews.R;
 import com.azheng.zhihutopnews.uitls.AnimUtils;
 import com.azheng.zhihutopnews.uitls.ColorUtils;
 
-
-/**
- * Created by xinghongfei on 16/8/20.
- */
 public class TranslateYTextView extends TextView {
     private static final int[] STATE_PINNED = {R.attr.state_pinned};
     private  Paint scrimPaint;
