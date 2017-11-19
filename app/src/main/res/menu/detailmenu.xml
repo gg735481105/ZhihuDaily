@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="collection"
-        android:id="@+id/item_collection"
+        android:id="@+id/collection"
         app:showAsAction="always"
         android:icon="@drawable/collect"/>
 
     <item
         android:title="share"
-        android:id="@+id/item_share"
+        android:id="@+id/share"
         app:showAsAction="always"
         android:icon="@drawable/share"/>
 

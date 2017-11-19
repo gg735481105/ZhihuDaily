@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.azheng.zhihutopnews.config.Config;
 
@@ -12,6 +13,8 @@ import com.azheng.zhihutopnews.config.Config;
 public class DBUtils {
     public static final String CREATE_TABLE_IF_NOT_EXISTS = "create table if not exists %s " +
             "(id integer  primary key autoincrement,key text unique,is_read integer)";
+    public static final String CREATE_TABLE_IF_NOT_COLLECT = "create table if not exists %s " +
+            "(id integer  primary key autoincrement,key text unique,is_collect integer)";
 
     private static DBUtils sDBUtis;
     private SQLiteDatabase mSQLiteDatabase;
@@ -48,6 +51,31 @@ public class DBUtils {
         cursor.close();
         return isRead;
     }
+    public void setIsCollect(String table, String key, int value){
+        Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
+        if (cursor.getCount() > 200 && cursor.moveToNext()) {
+            mSQLiteDatabase.delete(table, "id=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("id")))});
+        }
+        cursor.close();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("is_collect", value);
+        contentValues.put("key", key);
+        try {
+            mSQLiteDatabase.insertWithOnConflict(table, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isCollect(String table, String key) {
+        boolean isCoolect = false;
+        Cursor cursor = mSQLiteDatabase.query(table, null, "key=?", new String[]{key}, null, null, null);
+        if (cursor.moveToNext() && (cursor.getInt(cursor.getColumnIndex("is_collect")) == 1)) {
+            isCoolect = true;
+        }
+        cursor.close();
+        return isCoolect;
+    }
 
     public class DBHelper extends SQLiteOpenHelper {
 
@@ -60,6 +88,7 @@ public class DBUtils {
 
             db.execSQL(String.format(CREATE_TABLE_IF_NOT_EXISTS, Config.ZHIHU));
             db.execSQL(String.format(CREATE_TABLE_IF_NOT_EXISTS, Config.TOPNEWS));
+            db.execSQL(String.format(CREATE_TABLE_IF_NOT_COLLECT, Config.COLLECT));
         }
 
         @Override

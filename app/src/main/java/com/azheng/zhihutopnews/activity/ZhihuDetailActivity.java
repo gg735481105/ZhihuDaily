@@ -24,6 +24,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.azheng.zhihutopnews.uitls.DBUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.azheng.zhihutopnews.R;
@@ -63,6 +64,7 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
     private String title;//新闻标题
     private boolean isToolbarenable = true;//toolbar是否能点击
     private String mShareUrl;//分享url
+    private MenuItem mItemCollect;
     private IZhihuStoryPresenter iZhihuStoryPresenter;
     private NestedScrollView.OnScrollChangeListener scrollListener;
 
@@ -87,17 +89,28 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.detailmenu, menu);
+        mItemCollect = menu.getItem(0);
+        if (!DBUtils.getDB(this).isCollect(Config.COLLECT, id)){
+            mItemCollect.setIcon(R.drawable.collect);
+        } else {
+            mItemCollect.setIcon(R.drawable.collected);
+        }
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.item_collection:
-                Log.d("azheng", "collection is clicked");
+            case R.id.collection:
+                if (!DBUtils.getDB(this).isCollect(Config.COLLECT, id)){
+                    DBUtils.getDB(this).setIsCollect(Config.COLLECT, id, 1);
+                    mItemCollect.setIcon(R.drawable.collected);
+                } else {
+                    DBUtils.getDB(this).setIsCollect(Config.COLLECT, id, 0);
+                    mItemCollect.setIcon(R.drawable.collect);
+                }
                 break;
-            case R.id.item_share:
+            case R.id.share:
                 //File file = new File(mShareUrl);
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
