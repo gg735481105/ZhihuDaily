@@ -1,0 +1,44 @@
+package com.azheng.zhihutopnews.bean;
+
+/**
+ * Created by 阿正 on 2017/12/2 0002.
+ */
+
+public class CollectCfg {
+    public int id;
+    public int isCollect;
+    public String title;
+    public String time;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIsCollect() {
+        return isCollect;
+    }
+
+    public void setIsCollect(int isCollect) {
+        this.isCollect = isCollect;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+}

@@ -20,4 +20,7 @@
     <string name="about_me">Email:735481105@qq.com\nGitHub:</string>
     <string name="about_function">文章列表的展示与缓存\n首页界面的轮播控件\n文章浏览到底部时自动加载更多\n标记已读文章\n自动缓存文章\n夜间模式</string>
     <string name="about_thanks">rxjava\nrxandroid\nretrofit2\nokhttp3\nglide\nbutterknife\ngson</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

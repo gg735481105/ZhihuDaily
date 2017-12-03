@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-/**
- * Created by CDW on 2016/11/3.
- */
 
 public class ZhihuDaily {
 

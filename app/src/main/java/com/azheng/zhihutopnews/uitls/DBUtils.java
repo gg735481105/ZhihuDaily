@@ -7,14 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.azheng.zhihutopnews.bean.CollectCfg;
 import com.azheng.zhihutopnews.config.Config;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DBUtils {
     public static final String CREATE_TABLE_IF_NOT_EXISTS = "create table if not exists %s " +
             "(id integer  primary key autoincrement,key text unique,is_read integer)";
     public static final String CREATE_TABLE_IF_NOT_COLLECT = "create table if not exists %s " +
-            "(id integer  primary key autoincrement,key text unique,is_collect integer)";
+            "(id integer  primary key autoincrement,key text unique,is_collect integer,title TEXT,date TEXT)";
 
     private static DBUtils sDBUtis;
     private SQLiteDatabase mSQLiteDatabase;
@@ -51,15 +55,17 @@ public class DBUtils {
         cursor.close();
         return isRead;
     }
-    public void setIsCollect(String table, String key, int value){
+    public void setCollect(String table, String key, int value,String title,String date){
         Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
         if (cursor.getCount() > 200 && cursor.moveToNext()) {
             mSQLiteDatabase.delete(table, "id=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("id")))});
         }
         cursor.close();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("is_collect", value);
         contentValues.put("key", key);
+        contentValues.put("is_collect", value);
+        contentValues.put("title", title);
+        contentValues.put("date", date);
         try {
             mSQLiteDatabase.insertWithOnConflict(table, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
         }catch (Exception e){
@@ -75,6 +81,38 @@ public class DBUtils {
         }
         cursor.close();
         return isCoolect;
+    }
+
+    /*
+    * 当用户将收藏变为非收藏时，删除该条数据库
+    */
+    public void deleteCollect(String table, String key){
+        Cursor cursor = mSQLiteDatabase.query(table, null, "key=?", new String[]{key}, null, null, null);
+        mSQLiteDatabase.delete(table, "id=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("id")))});
+        cursor.close();
+    }
+
+    /*
+    * 返回收藏信息
+    * id，is_collect，title，time
+    */
+    public List<CollectCfg> getCollect(String table){
+        List<CollectCfg> mCollectList = new ArrayList<>();
+        Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
+        while (cursor.moveToNext()){
+            CollectCfg item = new CollectCfg();
+            int key = cursor.getInt(cursor.getColumnIndex("key"));
+            item.setId(key);
+            int iscollect = cursor.getInt(cursor.getColumnIndex("is_collect"));
+            item.setIsCollect(iscollect);
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            item.setTitle(title);
+            String time = cursor.getString(cursor.getColumnIndex("date"));
+            item.setTime(time);
+            mCollectList.add(item);
+        }
+        cursor.close();
+        return mCollectList;
     }
 
     public class DBHelper extends SQLiteOpenHelper {

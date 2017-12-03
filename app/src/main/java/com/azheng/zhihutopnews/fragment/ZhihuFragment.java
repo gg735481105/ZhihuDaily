@@ -36,13 +36,9 @@ import com.azheng.zhihutopnews.widget.MainBanner;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by CDW on 2016/10/31.
- */
 
 public class ZhihuFragment extends BaseFragment implements IZhihuFragment {
     TextView noConnectionText;
-
     @BindView(R.id.recycle_zhihu)
     RecyclerView recycleZhihu;
     @BindView(R.id.prograss)

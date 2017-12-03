@@ -35,10 +35,6 @@ import com.azheng.zhihutopnews.uitls.ObservableColorMatrix;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by CDW on 2016/11/20.
- */
-
 public class MainBanner extends FrameLayout implements View.OnClickListener {
 
     public static ViewPager mainbannerVp;

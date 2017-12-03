@@ -26,4 +26,5 @@
 
     <dimen name="drag_dismiss_distance">112dp</dimen> <!-- 2 * ?android:actionBarSize -->
     <dimen name="touched_app_bar">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

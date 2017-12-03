@@ -25,6 +25,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.azheng.zhihutopnews.uitls.DBUtils;
+import com.azheng.zhihutopnews.uitls.MathUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.azheng.zhihutopnews.R;
@@ -103,10 +104,10 @@ public class ZhihuDetailActivity extends BaseActivity implements IZhihuStory {
         switch (item.getItemId()) {
             case R.id.collection:
                 if (!DBUtils.getDB(this).isCollect(Config.COLLECT, id)){
-                    DBUtils.getDB(this).setIsCollect(Config.COLLECT, id, 1);
+                    DBUtils.getDB(this).setCollect(Config.COLLECT, id, 1,title, MathUtils.getCurDate());
                     mItemCollect.setIcon(R.drawable.collected);
                 } else {
-                    DBUtils.getDB(this).setIsCollect(Config.COLLECT, id, 0);
+                    DBUtils.getDB(this).deleteCollect(Config.COLLECT, id);
                     mItemCollect.setIcon(R.drawable.collect);
                 }
                 break;

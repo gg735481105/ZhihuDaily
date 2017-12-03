@@ -13,6 +13,7 @@ import rx.Observable;
 public interface ZhihuApi {
 
     /*
+    * http://news-at.zhihu.com/
     * 当日最新消息以及top消息
     */
     @GET("/api/4/news/latest")
@@ -29,7 +30,5 @@ public interface ZhihuApi {
     */
     @GET("/api/4/news/{id}")
     Observable<ZhihuStory> getZhihuStory(@Path("id") String id);
-
-
 
 }

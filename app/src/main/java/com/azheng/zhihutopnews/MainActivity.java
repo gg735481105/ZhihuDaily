@@ -17,7 +17,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +28,14 @@ import com.azheng.zhihutopnews.activity.BaseActivity;
 
 import com.azheng.zhihutopnews.config.Config;
 import com.azheng.zhihutopnews.fragment.AboutFragment;
+import com.azheng.zhihutopnews.fragment.CollectFragment;
 import com.azheng.zhihutopnews.fragment.ZhihuFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity{
+
     SimpleArrayMap<Integer, String> titleArrayMap = new SimpleArrayMap<>();
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity{
 
     private final static String isZhihuFragment = "com.azheng.zhihutopnews.fragment.ZhihuFragment";
     private final static String isAboutFragment = "com.azheng.zhihutopnews.fragment.AboutFragment";
+    private final static String isCollectFragment = "com.azheng.zhihutopnews.fragment.CollectFragment";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,6 @@ public class MainActivity extends BaseActivity{
         if (savedInstanceState == null) {
             if (currentMenuItem == null) {
                 currentMenuItem = navView.getMenu().findItem(R.id.zhihuitem);//默认选择知乎界面
-
             }
             if (currentMenuItem != null) {
                 currentMenuItem.setChecked(true);
@@ -183,7 +184,6 @@ public class MainActivity extends BaseActivity{
 
     /**
      * 切换不同的Fragment
-     *
      * @param fragment
      */
     private void switchFragment(Fragment fragment) {
@@ -194,7 +194,7 @@ public class MainActivity extends BaseActivity{
     }
 
     /**
-     * 根据ID加载不同的Fragment，当前只有一个Fragment，后续扩展
+     * 根据ID加载不同的Fragment
      *
      * @param itemId
      * @return
@@ -208,6 +208,8 @@ public class MainActivity extends BaseActivity{
             case R.id.item_about:
                 fragment = new AboutFragment();
                 break;
+            case R.id.item_collection:
+                fragment = new CollectFragment();
         }
         return fragment;
 
@@ -228,7 +230,6 @@ public class MainActivity extends BaseActivity{
     //当Recycle滑动到底部时，加载更多新闻
     public interface LoadingMore {
         void loadingStart();
-
         void loadingFinish();
     }
 
@@ -274,7 +275,6 @@ public class MainActivity extends BaseActivity{
 
     /**
      * 获取一个 View 的缓存视图
-     *
      * @param view
      * @return
      */

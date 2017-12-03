@@ -35,10 +35,6 @@ import com.azheng.zhihutopnews.uitls.ObservableColorMatrix;
 
 import java.util.ArrayList;
 
-/**
- * Created by CDW on 2016/11/5.
- */
-
 public class ZhihuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements MainActivity.LoadingMore {
     private static final int TYPE_LOADING_MORE = -1;
     private static final int NOMAL_ITEM = 1;

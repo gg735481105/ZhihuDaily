@@ -16,6 +16,9 @@
 
 package com.azheng.zhihutopnews.uitls;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Borrowed from github.com/romannurik/muzei
  */
@@ -25,5 +28,14 @@ public class MathUtils {
 
     public static float constrain(float min, float max, float v) {
         return Math.max(min, Math.min(max, v));
+    }
+
+    public static String getCurDate(){
+        /*Calendar calendar = Calendar.getInstance();
+        calendar.getTime();*/
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");
+        String date = formatter.format(currentTime);
+        return  date;
     }
 }
