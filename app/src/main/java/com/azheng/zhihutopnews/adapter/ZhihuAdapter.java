@@ -214,7 +214,6 @@ public class ZhihuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     // 增加到里面后，都会被看成对象。
     public void addItems(ArrayList<ZhihuDailyItem> list) {
         zhihuDailyItems.addAll(list);
-        notifyDataSetChanged();
     }
 
     @Override

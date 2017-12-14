@@ -316,4 +316,10 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment {
         recycleHeader = (MainBanner) head.findViewById(R.id.recycle_header);
         zhihuAdapter.setHead(head);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        fragmengZhihu.setBackgroundColor(getResources().getColor(Config.isNight ? R.color.background_dark : R.color.background_light));
+    }
 }

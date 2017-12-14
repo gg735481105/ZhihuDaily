@@ -24,6 +24,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.azheng.zhihutopnews.fragment.CollectFragment;
 import com.azheng.zhihutopnews.uitls.DBUtils;
 import com.azheng.zhihutopnews.uitls.MathUtils;
 import com.bumptech.glide.Glide;

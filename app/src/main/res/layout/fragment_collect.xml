@@ -2,19 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_collect"
     tools:context="com.azheng.zhihutopnews.fragment.CollectFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_collect"
-        android:background="@color/background_dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/prograss_collect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:indeterminate="true" />
+        android:indeterminate="true" />-->
 
 </FrameLayout>

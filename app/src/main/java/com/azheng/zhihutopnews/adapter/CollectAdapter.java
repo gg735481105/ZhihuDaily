@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,16 +28,15 @@ public class CollectAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context mContext;
     private List<CollectCfg> mCollectList = new ArrayList<>();
 
-    public CollectAdapter(Context context, List<CollectCfg> list) {
+    public CollectAdapter(Context context) {
         this.mContext = context;
-        this.mCollectList = list;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){
-            case PROGRESS_TYPE:
-                break;
+            /*case PROGRESS_TYPE:
+                break;*/
             case DISPLAY_TYPE:
                 return new CollectViewHolder(LayoutInflater.from(mContext).inflate(R.layout.collect_recycleview_item, parent, false));
         }
@@ -50,8 +50,8 @@ public class CollectAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             case DISPLAY_TYPE:
                 bindViewHolderCollect((CollectViewHolder) holder,position);
                 break;
-            case PROGRESS_TYPE:
-                break;
+            /*case PROGRESS_TYPE:
+                break;*/
         }
     }
 
@@ -70,29 +70,39 @@ public class CollectAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void toDetailActivity(CollectViewHolder holder,int position) {
-        Intent intent = new Intent(mContext, ZhihuDetailActivity.class);
-        intent.putExtra("id", mCollectList.get(position).getTime());
-        intent.putExtra("title", mCollectList.get(position).getTitle());
-        mContext.startActivity(intent);
+        final String id = mCollectList.get(position).getId();
+        final String title = mCollectList.get(position).getTitle();
+        holder.cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ZhihuDetailActivity.class);
+                Log.d("azheng","id:" + id + "title:" + title);
+                intent.putExtra("id", id);
+                intent.putExtra("title", title);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCollectList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position > 0){
+        /*if (position == 0){
+            return PROGRESS_TYPE;
+        } else {
             return DISPLAY_TYPE;
-        }
-        return PROGRESS_TYPE;
+        }*/
+        return DISPLAY_TYPE;
     }
 
     /*
     * 收藏详细信息
     */
-    class CollectViewHolder extends RecyclerView.ViewHolder {
+    private class CollectViewHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView time;
         CardView cardview;
@@ -104,4 +114,8 @@ public class CollectAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    public void resetData(List<CollectCfg> list){
+        this.mCollectList = list;
+        notifyDataSetChanged();
+    }
 }

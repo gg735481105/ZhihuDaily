@@ -34,8 +34,7 @@ public class MathUtils {
         /*Calendar calendar = Calendar.getInstance();
         calendar.getTime();*/
         Date currentTime = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd");
-        String date = formatter.format(currentTime);
-        return  date;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        return formatter.format(currentTime);
     }
 }

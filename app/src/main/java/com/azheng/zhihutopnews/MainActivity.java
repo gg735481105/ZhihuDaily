@@ -159,6 +159,9 @@ public class MainActivity extends BaseActivity{
             case isZhihuFragment:
                 ((ZhihuFragment) currentFragment).refreshUI();
                 break;
+            case isCollectFragment:
+                ((CollectFragment) currentFragment).refreshUI();
+                break;
         }
     }
 
@@ -209,7 +212,7 @@ public class MainActivity extends BaseActivity{
                 fragment = new AboutFragment();
                 break;
             case R.id.item_collection:
-                fragment = new CollectFragment();
+                fragment = new CollectFragment(this);
         }
         return fragment;
 

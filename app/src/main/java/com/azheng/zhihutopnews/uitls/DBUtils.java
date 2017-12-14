@@ -56,9 +56,10 @@ public class DBUtils {
         return isRead;
     }
     public void setCollect(String table, String key, int value,String title,String date){
-        Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
-        if (cursor.getCount() > 200 && cursor.moveToNext()) {
-            mSQLiteDatabase.delete(table, "id=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("id")))});
+        //如果已经存在则不写入
+        Cursor cursor = mSQLiteDatabase.query(table, null, "key=?", new String[]{key}, null, null, null);
+        if (cursor.moveToFirst() && cursor.getString(cursor.getColumnIndex("id")).equals(key)) {
+            return;
         }
         cursor.close();
         ContentValues contentValues = new ContentValues();
@@ -88,7 +89,9 @@ public class DBUtils {
     */
     public void deleteCollect(String table, String key){
         Cursor cursor = mSQLiteDatabase.query(table, null, "key=?", new String[]{key}, null, null, null);
-        mSQLiteDatabase.delete(table, "id=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("id")))});
+        if (cursor.moveToFirst()){
+            mSQLiteDatabase.delete(table, "key=?", new String[]{String.valueOf(cursor.getInt(cursor.getColumnIndex("key")))});
+        }
         cursor.close();
     }
 
@@ -101,7 +104,7 @@ public class DBUtils {
         Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
         while (cursor.moveToNext()){
             CollectCfg item = new CollectCfg();
-            int key = cursor.getInt(cursor.getColumnIndex("key"));
+            String key = cursor.getString(cursor.getColumnIndex("key"));
             item.setId(key);
             int iscollect = cursor.getInt(cursor.getColumnIndex("is_collect"));
             item.setIsCollect(iscollect);
