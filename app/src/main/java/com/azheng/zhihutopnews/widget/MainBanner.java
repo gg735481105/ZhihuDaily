@@ -44,12 +44,12 @@ public class MainBanner extends FrameLayout implements View.OnClickListener {
 
 
     private Context context;
-    private ArrayList<TopStoryItem> topStoryList = new ArrayList<>();
+    private static ArrayList<TopStoryItem> topStoryList = new ArrayList<>();
     private List<View> views;
     private List<ImageView> iv_dots;
-    private boolean isAutoPlay;
-    private int currentItem;
-    private Handler handler = new Handler();
+    private static boolean isAutoPlay;
+    private static int currentItem;
+    private static Handler handler = new Handler();
     private OnItemClickListener itemClickListener;
 
     public MainBanner(Context context) {
@@ -152,7 +152,6 @@ public class MainBanner extends FrameLayout implements View.OnClickListener {
         topStoryList.clear();
         iv_dots.clear();
         mainbannerLlDot.removeAllViews();
-        currentItem = 1;
 
         topStoryList = zhihuDaily.getTopstories();
         int len = topStoryList.size();
@@ -195,20 +194,21 @@ public class MainBanner extends FrameLayout implements View.OnClickListener {
     }
 
     private void startPlay() {
-        handler.removeCallbacks(task);
+        handler.removeCallbacks(task);//如果Runnable不为静态，Activity从后台切换到前台后，会重新开启对象，该方法失效
+        currentItem = 1;
         isAutoPlay = true;
         handler.postDelayed(task, 3000);
     }
 
-    private final Runnable task = new Runnable() {
-
+    private static Runnable task = new Runnable() {
         @Override
         public void run() {
+            Log.d("azheng","currentItem:" + currentItem);
             if (isAutoPlay) {
-                currentItem = currentItem % (topStoryList.size() + 1) + 1;
+                currentItem = currentItem % topStoryList.size() + 1;
                 if (currentItem == 1) {
                     mainbannerVp.setCurrentItem(currentItem, false);
-                    handler.post(task);
+                    handler.postDelayed(task, 5000);
                 } else {
                     mainbannerVp.setCurrentItem(currentItem);
                     handler.postDelayed(task, 5000);
@@ -223,20 +223,20 @@ public class MainBanner extends FrameLayout implements View.OnClickListener {
         @Override
         public void onPageScrollStateChanged(int arg0) {
             switch (arg0) {
+                //滑动结束
                 case 0:
-                    if (mainbannerVp.getCurrentItem() == 0) {
-                        mainbannerVp.setCurrentItem(topStoryList.size(), false);
-                    } else if (mainbannerVp.getCurrentItem() == topStoryList.size() + 1) {
-                        mainbannerVp.setCurrentItem(1, false);
-                    }
-                    currentItem = mainbannerVp.getCurrentItem();
+                    break;
+                //开始滑动
+               case 1:
+                    break;
+               //滑动后手指离开屏幕瞬间
+                case 2:
                     break;
             }
         }
 
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
-            Log.d("azheng","azheng: onPageScrolled" + String.valueOf(arg0) +" "+ String.valueOf(arg1) + " "+String.valueOf(arg2));
         }
 
         @Override
