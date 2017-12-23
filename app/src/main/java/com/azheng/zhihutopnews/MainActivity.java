@@ -60,7 +60,8 @@ public class MainActivity extends BaseActivity{
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(navigationOnClickListener);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);//去掉默认显示的Title
+        getSupportActionBar().setDisplayShowTitleEnabled(false);//去掉默认显示的Title
+        toolbar.setTitle(R.string.home);
         initView();
         initLisneter();
         if (savedInstanceState == null) {
@@ -214,12 +215,15 @@ public class MainActivity extends BaseActivity{
             case R.id.item_collection:
                 fragment = new CollectFragment(this);
         }
+        toolbar.setTitle(titleArrayMap.get(itemId));
         return fragment;
 
     }
 
     private void addFragmentAndTitle() {
-        titleArrayMap.put(R.id.zhihuitem, getResources().getString(R.string.zhihu));
+        titleArrayMap.put(R.id.zhihuitem, getResources().getString(R.string.home));
+        titleArrayMap.put(R.id.item_collection, getResources().getString(R.string.mycollection));
+        titleArrayMap.put(R.id.item_about, getResources().getString(R.string.about));
 
     }
 

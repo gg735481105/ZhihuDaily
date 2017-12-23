@@ -101,7 +101,7 @@ public class DBUtils {
     */
     public List<CollectCfg> getCollect(String table){
         List<CollectCfg> mCollectList = new ArrayList<>();
-        Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id asc");
+        Cursor cursor = mSQLiteDatabase.query(table, null, null, null, null, null, "id desc");
         while (cursor.moveToNext()){
             CollectCfg item = new CollectCfg();
             String key = cursor.getString(cursor.getColumnIndex("key"));

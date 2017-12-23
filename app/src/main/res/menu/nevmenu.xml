@@ -5,7 +5,7 @@
             android:id="@+id/zhihuitem"
             android:checkable="true"
             android:icon="@drawable/zhihu"
-            android:title="阿正日报"
+            android:title="@string/home"
             />
     </group>
     <group>

@@ -35,24 +35,6 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textColor="@color/toolbar_background_light"
-            android:text="关于我"/>
-        <TextView
-            android:id="@+id/about_me"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textColor="?attr/text_primary"
-            android:text="@string/about_me"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/toolbar_background_light"
             android:text="实现功能"/>
         <TextView
             android:id="@+id/about_function"
@@ -79,6 +61,24 @@
             android:layout_margin="5dp"
             android:textColor="?attr/text_primary"
             android:text="@string/about_thanks"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/toolbar_background_light"
+            android:text="关于我"/>
+        <TextView
+            android:id="@+id/about_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="?attr/text_primary"
+            android:text="@string/about_me"/>
     </LinearLayout>
 
 </LinearLayout>
