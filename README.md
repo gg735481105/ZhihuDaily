@@ -30,5 +30,5 @@
 **感谢**
 
 感谢开源，让我有机会学习到前辈们优秀的代码。
-Github：https://github.com/xiaozhuazheng
-CSND：http://blog.csdn.net/mr_azheng
+* Github：https://github.com/xiaozhuazheng
+* CSND：http://blog.csdn.net/mr_azheng
