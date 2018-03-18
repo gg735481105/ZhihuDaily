@@ -2,10 +2,6 @@ package com.azheng.zhihutopnews.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by CDW on 2016/11/3.
- */
-
 public class ZhihuDailyItem {
 
     @SerializedName("images")

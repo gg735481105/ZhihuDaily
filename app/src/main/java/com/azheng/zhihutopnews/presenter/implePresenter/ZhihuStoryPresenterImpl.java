@@ -1,9 +1,5 @@
 package com.azheng.zhihutopnews.presenter.implePresenter;
 
-
-
-
-
 import com.azheng.zhihutopnews.api.ApiManage;
 import com.azheng.zhihutopnews.bean.ZhihuStory;
 import com.azheng.zhihutopnews.presenter.IZhihuStoryPresenter;
@@ -13,7 +9,6 @@ import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-
 
 public class ZhihuStoryPresenterImpl extends BasePresenterImpl implements IZhihuStoryPresenter {
 

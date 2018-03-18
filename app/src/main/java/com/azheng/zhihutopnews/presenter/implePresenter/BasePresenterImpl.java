@@ -5,10 +5,6 @@ import com.azheng.zhihutopnews.presenter.BasePresenter;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
-/**
- * Created by CDW on 2016/11/5.
- */
-
 public class BasePresenterImpl implements BasePresenter {
     private CompositeSubscription compositeSubscription;
 

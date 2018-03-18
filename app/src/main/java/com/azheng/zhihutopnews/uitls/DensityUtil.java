@@ -9,7 +9,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-
 public class DensityUtil {
 
 	private static int[] deviceWidthHeight = new int[2];

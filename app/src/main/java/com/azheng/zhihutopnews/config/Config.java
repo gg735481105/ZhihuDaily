@@ -1,6 +1,5 @@
 package com.azheng.zhihutopnews.config;
 
-
 public class Config {
 
     public static final String DB__IS_READ_NAME = "IsRead";

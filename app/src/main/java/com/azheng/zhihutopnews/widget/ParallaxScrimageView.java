@@ -28,7 +28,6 @@ import com.azheng.zhihutopnews.R;
 import com.azheng.zhihutopnews.uitls.AnimUtils;
 import com.azheng.zhihutopnews.uitls.ColorUtils;
 
-
 /**
  * An image view which supports parallax scrolling and applying a scrim onto it's content. Get it.
  *

@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-
 public class ZhihuDaily {
 
     /* {"date":"20161107","stories":

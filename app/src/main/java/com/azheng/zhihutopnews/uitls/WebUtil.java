@@ -1,8 +1,5 @@
 package com.azheng.zhihutopnews.uitls;
 
-/**
- * Created by 蔡小木 on 2016/3/7 0007.
- */
 public class WebUtil {
 
     private WebUtil() {

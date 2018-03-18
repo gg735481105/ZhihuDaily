@@ -1,6 +1,5 @@
 package com.azheng.zhihutopnews;
 
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;

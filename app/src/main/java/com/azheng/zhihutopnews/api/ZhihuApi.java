@@ -1,14 +1,11 @@
 package com.azheng.zhihutopnews.api;
 
-
-
 import com.azheng.zhihutopnews.bean.ZhihuDaily;
 import com.azheng.zhihutopnews.bean.ZhihuStory;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
-
 
 public interface ZhihuApi {
 

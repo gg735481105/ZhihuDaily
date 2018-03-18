@@ -18,10 +18,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by CDW on 2016/11/5.
- */
-
 public class ZhihuPresenterImpl extends BasePresenterImpl implements IZhihuPresenter {
 
     private IZhihuFragment zhihuFragment;

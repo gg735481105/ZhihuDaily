@@ -32,8 +32,6 @@ import android.view.View;
  * for certain {@link RecyclerView.ViewHolder} types.
  */
 public class GridItemDividerDecoration extends RecyclerView.ItemDecoration {
-
-
     private final float dividerSize;
     private final Paint paint;
 

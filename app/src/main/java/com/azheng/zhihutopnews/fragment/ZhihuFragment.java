@@ -36,7 +36,6 @@ import com.azheng.zhihutopnews.widget.MainBanner;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class ZhihuFragment extends BaseFragment implements IZhihuFragment {
     TextView noConnectionText;
     @BindView(R.id.recycle_zhihu)

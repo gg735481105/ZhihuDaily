@@ -13,7 +13,6 @@ import com.azheng.zhihutopnews.config.Config;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DBUtils {
     public static final String CREATE_TABLE_IF_NOT_EXISTS = "create table if not exists %s " +
             "(id integer  primary key autoincrement,key text unique,is_read integer)";
@@ -22,10 +21,10 @@ public class DBUtils {
 
     private static DBUtils sDBUtis;
     private SQLiteDatabase mSQLiteDatabase;
-
     private DBUtils(Context context) {
         mSQLiteDatabase = new DBHelper(context, Config.DB__IS_READ_NAME + ".db").getWritableDatabase();
     }
+
 
     public static synchronized DBUtils getDB(Context context) {
         if (sDBUtis == null)

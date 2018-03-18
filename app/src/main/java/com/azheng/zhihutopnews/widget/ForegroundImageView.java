@@ -16,7 +16,6 @@
 
 package com.azheng.zhihutopnews.widget;
 
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -27,8 +26,6 @@ import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
 
 import com.azheng.zhihutopnews.R;
-
-
 /**
  * An extension to {@link ImageView} which has a foreground drawable.
  */

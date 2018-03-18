@@ -10,10 +10,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by CDW on 2016/10/31.
- */
-
 public class Pop  extends Visibility {
 
     public Pop(Context context, AttributeSet attrs) {
