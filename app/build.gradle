@@ -1,20 +1,39 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply from: 'tinkerpatch.gradle'
+
 android {
+
+    signingConfigs {
+        hami {
+            keyAlias 'hami'
+            keyPassword 'hami12344321'
+            storeFile file('F:/SignKey/signkey.jks')
+            storePassword 'azheng12344321'
+        }
+    }
+
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.azheng.zhihutopnews"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 110
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.hami
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.hami
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.hami
         }
     }
 }
@@ -44,4 +63,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //可选，用于生成application类
+    provided("com.tinkerpatch.tinker:tinker-android-anno:1.9.9")
+    //tinker的核心库
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.9")
 }

@@ -1,5 +1,6 @@
 package com.azheng.zhihutopnews.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+@SuppressLint("ValidFragment")
 public class CollectFragment extends BaseFragment {
     @BindView(R.id.recycle_collect)
     RecyclerView mRecycleCollect;
