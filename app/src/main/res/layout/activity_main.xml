@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
-    tools:context="com.azheng.zhihutopnews.MainActivity">
+    tools:context="com.azheng.hami.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

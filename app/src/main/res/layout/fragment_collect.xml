@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_collect"
-    tools:context="com.azheng.zhihutopnews.fragment.CollectFragment">
+    tools:context="com.azheng.hami.fragment.CollectFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_collect"

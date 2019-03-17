@@ -6,17 +6,17 @@ android {
 
     signingConfigs {
         hami {
-            keyAlias 'hami'
-            keyPassword 'hami12344321'
-            storeFile file('F:/SignKey/signkey.jks')
-            storePassword 'azheng12344321'
+            keyAlias 'key1'
+            keyPassword '******'
+            storeFile file('D:/key/key.jks')
+            storePassword '******'
         }
     }
 
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.azheng.zhihutopnews"
+        applicationId "com.azheng.hami"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 110

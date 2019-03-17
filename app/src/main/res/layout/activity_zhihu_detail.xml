@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        >
-        <com.azheng.zhihutopnews.widget.ParallaxScrimageView
+        <com.azheng.hami.widget.ParallaxScrimageView
             android:id="@+id/shot"
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -21,7 +21,7 @@
             app:parallaxFactor="-0.5"
             app:scrimAlpha="0"
            />
-        <com.azheng.zhihutopnews.widget.TranslateYTextView
+        <com.azheng.hami.widget.TranslateYTextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -23,7 +23,7 @@
     <transitionSet>
         <changeBounds android:duration="300" />
         <transition
-            class="com.azheng.zhihutopnews.widget.LiftOff"
+            class="com.azheng.hami.widget.LiftOff"
             android:duration="400"
             android:elevation="@dimen/touch_raise" />
         <targets>
@@ -32,7 +32,7 @@
     </transitionSet>
 
     <transition
-        class="com.azheng.zhihutopnews.widget.ShotSharedEnter"
+        class="com.azheng.hami.widget.ShotSharedEnter"
         android:duration="300">
         <targets>
             <target android:targetId="@id/shot" />
